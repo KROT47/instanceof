@@ -1,6 +1,6 @@
 {
   "name": "instanceof",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "JavaScript all types detection module (crossbrowser)",
   "main": "index.js",
   "scripts": {
