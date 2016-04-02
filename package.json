@@ -1,0 +1,23 @@
+{
+  "name": "instanceof",
+  "version": "1.0.0",
+  "description": "JavaScript all types detection module (crossbrowser)",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KROT47/instanceof.git"
+  },
+  "keywords": [
+    "instanceof",
+    "typeof"
+  ],
+  "author": "KROT47",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KROT47/instanceof/issues"
+  },
+  "homepage": "https://github.com/KROT47/instanceof#readme"
+}
