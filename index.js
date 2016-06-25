@@ -8,6 +8,7 @@ module.exports = Instanceof;
 /* --------------------------------- Instanceof --------------------------------- */
 
 function Instanceof( obj, types ) {
+
 	if ( Array.isArray( types ) ) {
 		for ( var i = types.length; i--; ) if ( _Instanceof( obj, types[i] ) ) return true;
 	} else {
@@ -15,6 +16,24 @@ function Instanceof( obj, types ) {
 	}
 
 	return false;
+}
+
+
+/* --------------------------------- GetType --------------------------------- */
+
+Instanceof.getType = function ( obj ) {
+
+	var type = typeof obj;
+
+	switch ( type ) {
+
+		case 'number': return isNaN( obj ) ? 'NaN' : type;
+
+		case 'object': return Array.isArray( obj ) ? 'Array' : ( obj === null ? 'null' : type );
+
+		default: return type;
+	}
+
 }
 
 
@@ -35,57 +54,36 @@ function _Instanceof( obj, type ) {
 
 	switch ( type ) {
 			
-		case 'nan':
-			return typeof obj == 'number' && isNaN( obj )
-		break;
+		case 'nan': return typeof obj == 'number' && isNaN( obj );
 		
 		case Object:
-		case 'object':
-			return !Array.isArray( obj ) && obj !== null && typeof obj == 'object'
-		break;
+		case 'object': return !Array.isArray( obj ) && obj !== null && typeof obj == 'object';
 
 		case Array:
-		case 'array':
-			return Array.isArray( obj )
-		break;
+		case 'array': return Array.isArray( obj );
 
 		case String:
-		case 'string':
-			return typeof obj == 'string'
-		break;
+		case 'string': return typeof obj == 'string';
 
 		case Number:
-		case 'number':
-			return typeof obj == 'number' && !isNaN( obj )
-		break;
+		case 'number': return typeof obj == 'number' && !isNaN( obj );
 
 		case Boolean:
-		case 'boolean':
-			return typeof obj == 'boolean'
-		break;
+		case 'boolean': return typeof obj == 'boolean';
 
 		case Function:
-		case 'function':
-			return typeof obj == 'function'
-		break;
+		case 'function': return typeof obj == 'function';
 
 		case null:
-		case 'null':
-			return obj === null
-		break;
+		case 'null': return obj === null;
 		
 		case undefined:
-		case 'undefined':
-			return obj === undefined
-		break;
+		case 'undefined': return obj === undefined;
 		
 		case Symbol:
-		case 'symbol':
-			return typeof obj == 'symbol'
-		break;
+		case 'symbol': return typeof obj == 'symbol';
 		
-		default:
-			return obj instanceof type;
+		default: return obj instanceof type;
 	}
 }
 

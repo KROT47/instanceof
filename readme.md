@@ -1,6 +1,7 @@
 # Instanceof
 
 Checks if variable is instance of some constructor.  
+Also can detect any type with Instanceof.getType()  
 
 **Usage:**
 
@@ -20,4 +21,11 @@ Instanceof( '123', Number );                                // false
 Instanceof( Object, Object );                               // false
 Instanceof( Object, [ Object, 'NaN', 'Null', null ] );      // false
 Instanceof( 123, [ Object, 'NaN', 'Null', null, 'null' ] ); // false
+
+// --- GetType ---
+
+Instanceof.getType( NaN );									// 'NaN'
+Instanceof.getType( { a: 123 } );							// 'object'
+Instanceof.getType( [ 1, 2, 3 ] );							// 'array'
+Instanceof.getType( null );									// 'null'
 ```
