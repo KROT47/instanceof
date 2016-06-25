@@ -29,7 +29,7 @@ Instanceof.getType = function ( obj ) {
 
 		case 'number': return isNaN( obj ) ? 'NaN' : type;
 
-		case 'object': return Array.isArray( obj ) ? 'Array' : ( obj === null ? 'null' : type );
+		case 'object': return Array.isArray( obj ) ? 'array' : ( obj === null ? 'null' : type );
 
 		default: return type;
 	}
