@@ -4,10 +4,14 @@
 
 module.exports = Instanceof;
 
+module.exports.getType = GetType;
+
 
 /* --------------------------------- Instanceof --------------------------------- */
 
 function Instanceof( obj, types ) {
+
+	if ( typeof obj.valueOf === 'function' ) obj = obj.valueOf();
 
 	if ( Array.isArray( types ) ) {
 		for ( var i = types.length; i--; ) if ( _Instanceof( obj, types[i] ) ) return true;
@@ -21,7 +25,9 @@ function Instanceof( obj, types ) {
 
 /* --------------------------------- GetType --------------------------------- */
 
-Instanceof.getType = function ( obj ) {
+function GetType( obj ) {
+
+	if ( typeof obj.valueOf === 'function' ) obj = obj.valueOf();
 
 	var type = typeof obj;
 
@@ -40,22 +46,22 @@ Instanceof.getType = function ( obj ) {
 /* --------------------------------- _Instanceof --------------------------------- */
 
 function _Instanceof( obj, type ) {
-	
+
 	switch ( typeof type ) {
 		case 'number':
 			if ( isNaN( type ) ) type = 'nan';
 			else throw Error( 'type must be function, string, object or NaN' );
 		break;
-			
+
 		case 'string':
 			type = type.toLowerCase();
 		break;
 	}
 
 	switch ( type ) {
-			
+
 		case 'nan': return typeof obj == 'number' && isNaN( obj );
-		
+
 		case Object:
 		case 'object': return !Array.isArray( obj ) && obj !== null && typeof obj == 'object';
 
@@ -76,13 +82,13 @@ function _Instanceof( obj, type ) {
 
 		case null:
 		case 'null': return obj === null;
-		
+
 		case undefined:
 		case 'undefined': return obj === undefined;
-		
+
 		case Symbol:
 		case 'symbol': return typeof obj == 'symbol';
-		
+
 		default: return obj instanceof type;
 	}
 }
