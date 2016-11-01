@@ -11,7 +11,7 @@ module.exports.getType = GetType;
 
 function Instanceof( obj, types ) {
 
-	if ( typeof obj.valueOf === 'function' ) obj = obj.valueOf();
+	if ( obj && typeof obj.valueOf === 'function' ) obj = obj.valueOf();
 
 	if ( Array.isArray( types ) ) {
 		for ( var i = types.length; i--; ) if ( _Instanceof( obj, types[i] ) ) return true;
@@ -27,7 +27,7 @@ function Instanceof( obj, types ) {
 
 function GetType( obj ) {
 
-	if ( typeof obj.valueOf === 'function' ) obj = obj.valueOf();
+	if ( obj && typeof obj.valueOf === 'function' ) obj = obj.valueOf();
 
 	var type = typeof obj;
 
